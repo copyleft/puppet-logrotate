@@ -4,13 +4,18 @@
 #
 #   include logrotate::base
 class logrotate::base {
+  $group = $kernel ? {
+    'FreeBSD' => 'wheel',
+    default => 'root'
+  }
+
   package { 'logrotate':
     ensure => latest,
   }
 
   File {
     owner   => 'root',
-    group   => 'root',
+    group   => $group,
     require => Package['logrotate'],
   }
 
