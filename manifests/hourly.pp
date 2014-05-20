@@ -29,12 +29,12 @@ class logrotate::hourly($ensure='present') {
     '/etc/logrotate.d/hourly':
       ensure => $dir_ensure,
       owner  => 'root',
-      group  => 'root',
+      group  => $group,
       mode   => '0755';
     '/etc/cron.hourly/logrotate':
       ensure  => $ensure,
       owner   => 'root',
-      group   => 'root',
+      group   => $group,
       mode    => '0555',
       source  => 'puppet:///modules/logrotate/etc/cron.hourly/logrotate',
       require => [
