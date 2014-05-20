@@ -23,13 +23,16 @@ class logrotate::base {
     '/etc/logrotate.conf':
       ensure  => file,
       mode    => '0444',
+      group   => $group,
       source  => 'puppet:///modules/logrotate/etc/logrotate.conf';
     '/etc/logrotate.d':
       ensure  => directory,
-      mode    => '0755';
+      mode    => '0755',
+      group   => $group;
     '/etc/cron.daily/logrotate':
       ensure  => file,
       mode    => '0555',
+      group   => $group,
       source  => 'puppet:///modules/logrotate/etc/cron.daily/logrotate';
   }
 
