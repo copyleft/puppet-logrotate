@@ -46,6 +46,10 @@ class logrotate::base {
     'SuSE': {
       include logrotate::defaults::suse
     }
+    'FreeBSD': {
+      include logrotate::defaults::freebsd
+    }
+    
     default: { }
   }
 }
