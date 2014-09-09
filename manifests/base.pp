@@ -29,11 +29,14 @@ class logrotate::base {
       ensure  => directory,
       mode    => '0755',
       group   => $group;
+
+    if $kernel != 'FreeBSD' {
     '/etc/cron.daily/logrotate':
       ensure  => file,
       mode    => '0555',
       group   => $group,
       source  => 'puppet:///modules/logrotate/etc/cron.daily/logrotate';
+    }
   }
 
   case $::osfamily {

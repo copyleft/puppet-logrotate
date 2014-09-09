@@ -13,12 +13,12 @@ class logrotate::defaults::freebsd {
     rotate       => 1,
   }
 
-  logrotate::rule {
-    'wtmp':
-      path        => '/var/log/wtmp',
-      create_mode => '0664';
-    'btmp':
-      path        => '/var/log/btmp',
-      create_mode => '0660';
-  }
+#  logrotate::rule {
+#    'wtmp':
+#      path        => '/var/log/wtmp',
+#      create_mode => '0664';
+#    'btmp':
+#      path        => '/var/log/btmp',
+#      create_mode => '0660';
+#  }
 }
