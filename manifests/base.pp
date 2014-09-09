@@ -29,8 +29,10 @@ class logrotate::base {
       ensure  => directory,
       mode    => '0755',
       group   => $group;
+  }
 
-    if $kernel != 'FreeBSD' {
+  if $kernel != 'FreeBSD' {
+    file {
     '/etc/cron.daily/logrotate':
       ensure  => file,
       mode    => '0555',
